@@ -12,10 +12,13 @@ class SearchAppointments extends Component {
                     </form> 
                     <div className="dropdown">
                         <button className="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
-                        <div className="dropdown-menu">
-                            <button className="dropdown-item btn btn-outline-light" >Action</button>
-                            <button className="dropdown-item btn btn-outline-light" >Another action</button>
-                            <button className="dropdown-item btn btn-outline-light" >Something else here</button>
+                        <div className="dropdown-menu dropdown-menu-right">
+                            <button className={'dropdown-item sort-by btn btn-outline-grey ' + (this.props.orderBy=== 'default' ? 'active': '')} onClick={e=>this.props.changeOrder('default','Default')} >Default</button>
+                            <button className={'dropdown-item sort-by btn btn-outline-grey ' + (this.props.orderBy=== 'petName' ? 'active': '')} onClick={e=>this.props.changeOrder('petName',this.props.orderDirection)} >Pet Name</button>
+                            <button className={'dropdown-item sort-by btn btn-outline-grey '  + (this.props.orderBy=== 'ownerName' ? 'active': '')} onClick={e=>this.props.changeOrder('ownerName',this.props.orderDirection)}>Owner Name</button>
+                            <div role="separator" className="dropdown-divider"></div>
+                            <button className={'dropdown-item btn sort-by btn-outline-grey '  + (this.props.orderDirection=== 'asc' ? 'active': '')} onClick={e=>this.props.changeOrder(this.props.orderBy,'asc')}>Ascending</button>
+                            <button className={'dropdown-item btn sort-by btn-outline-grey '  + (this.props.orderDirection=== 'dec' ? 'active': '')} onClick={e=>this.props.changeOrder(this.props.orderBy,'dec')}>Descending</button>
                            
                         </div>
                     </div>

@@ -1,6 +1,4 @@
-.add-appointment .card-body {
-  display: none;
-}
+
 
 .apt-addheading {
   cursor: pointer;
@@ -9,7 +7,7 @@
 
 .appointment-list {
   font-size: 1.1em;
-  margin-top: 100px;
+  margin-top: 50px;
   
 
 }

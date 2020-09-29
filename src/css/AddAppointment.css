@@ -1,0 +1,11 @@
+.addAppointment{
+    margin-top: 120px;
+    margin-bottom: 20px;
+    
+}
+
+ .add-appointment .card-body {
+    display: none;
+  }
+
+  
