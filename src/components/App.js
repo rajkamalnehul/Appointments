@@ -4,6 +4,7 @@ import ListAppointments from './ListAppointments';
 import AddAppointments from './AddAppointments';
 import SearchAppointments from './SearchAppointments';
 import {without} from 'lodash';
+
 class App extends Component {
   constructor(){
     super();
@@ -12,18 +13,28 @@ class App extends Component {
       formDisplay:false,
       lastIndex: 0,
       orderBy:'petName',
-      orderDirection:'asc'
+      orderDirection:'asc',
+      searchField:' '
       
     }; 
     this.addAppointments = this.addAppointments.bind(this);
   }
+ 
+  querry=(querryText)=>{
+    this.setState({searchField:querryText});
+  }
+  
 
-  changeOrder=(order,direction)=>{
+  changeOrder= (order,direction)=>{
+    
     this.setState({orderBy:order})
     this.setState({orderDirection:direction})
-    }
+  }
+    
+    
+    
 
-   addAppointments(apts){
+   addAppointments =(apts)=>{
     let tempApts=this.state.myAppointments;
     apts.aptId =this.state.lastIndex;
     tempApts.unshift(apts);
@@ -70,37 +81,45 @@ class App extends Component {
 
   render() {
     
-      let order;
+     let order;
       let filteredApts = this.state.myAppointments;
+      
        if (this.state.orderDirection === 'asc') {
        order = 1;
        } else {
        order = -1;
       }
    
-      filteredApts.sort((a, b) => {
+       filteredApts.sort((a, b) => {
       if (
-     a[this.state.orderBy].toLowerCase() <
+       a[this.state.orderBy].toLowerCase() <
        b[this.state.orderBy].toLowerCase()
        ) {
        return -1 * order;
        } else {
        return 1 * order;
        }
+     })
+     
+     const{myAppointments,searchField}= this.state;
+     
+     const filteredArray =myAppointments.filter(eachItem => {
+        return(
+       eachItem['petName']
+       .toLowerCase()
+       .includes(searchField.toLowerCase())
+     )
      });
-    
-  
-    
-    
+     
     return (
       <main className="page bg-white" id="petratings">
         <div className="container">
           <div className="row">
             <div className="col-md-12 bg-white">
               <div className="container">
-                <SearchAppointments orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder} />
+                <SearchAppointments orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder}  handleChange={this.querry} />
                 <AddAppointments formdisplay={this.state.formDisplay} toggleForm={this.toggleform} addAppointments={this.addAppointments}/>
-                <ListAppointments  appointments={this.state.myAppointments} deleteAppointments={this.deleteappointments }/>
+                <ListAppointments  appointments={filteredArray} deleteAppointments={this.deleteappointments }/>
               </div>
             </div>
           </div>
