@@ -22,13 +22,13 @@ class App extends Component {
  
   querry=(querryText)=>{
     this.setState({searchField:querryText});
-  }
+    }
   
 
   changeOrder= (order,direction)=>{
     
-    this.setState({orderBy:order})
-    this.setState({orderDirection:direction})
+    this.setState({orderBy:order});
+    this.setState({orderDirection:direction});
   }
     
     
@@ -90,7 +90,7 @@ class App extends Component {
        order = -1;
       }
    
-       filteredApts.sort((a, b) => {
+       filteredApts=filteredApts.sort((a, b) => {
       if (
        a[this.state.orderBy].toLowerCase() <
        b[this.state.orderBy].toLowerCase()
@@ -99,17 +99,21 @@ class App extends Component {
        } else {
        return 1 * order;
        }
-     })
-     
-     const{myAppointments,searchField}= this.state;
-     
-     const filteredArray =myAppointments.filter(eachItem => {
+     }).filter(eachItem => {
         return(
        eachItem['petName']
        .toLowerCase()
-       .includes(searchField.toLowerCase())
-     )
+       .includes(this.state.searchField.toLowerCase()) ||
+       eachItem['ownerName']
+       .toLowerCase()
+       .includes(this.state.searchField.toLowerCase()) ||
+       eachItem['aptNotes']
+       .toLowerCase()
+       .includes(this.state.searchField.toLowerCase()) 
+
+        )
      });
+
      
     return (
       <main className="page bg-white" id="petratings">
@@ -119,7 +123,8 @@ class App extends Component {
               <div className="container">
                 <SearchAppointments orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder}  handleChange={this.querry} />
                 <AddAppointments formdisplay={this.state.formDisplay} toggleForm={this.toggleform} addAppointments={this.addAppointments}/>
-                <ListAppointments  appointments={filteredArray} deleteAppointments={this.deleteappointments }/>
+                <ListAppointments  appointments={filteredApts} deleteAppointments={this.deleteappointments }/>
+               
               </div>
             </div>
           </div>
