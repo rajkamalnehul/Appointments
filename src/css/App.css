@@ -28,7 +28,7 @@
 
 .appointment-list .label-item {
   font-weight: 600;
-  color: #667b82;
+  color:#19c0cc;
 }
 
 .appointment-list .apt-date {
@@ -43,4 +43,11 @@
 }
 
 
+.container{
+  display: flex;
+  flex-direction: column;
+ 
+  cursor: pointer;
+
+}
 

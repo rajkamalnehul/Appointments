@@ -1,6 +1,8 @@
 .addAppointment{
     margin-top: 120px;
     margin-bottom: 20px;
+    margin-left: 80px;
+    margin-right: 80px;
     
 }
 
@@ -8,4 +10,14 @@
     display: none;
   }
 
+  @media only screen and (max-width: 780px) {
+    .addAppointment{
+     margin-left: 0px;
+     margin-right: 0px;
+     margin-top: 150px;
+    }
+  }
   
+  bg.{
+    background-color: #377bb5;
+  }

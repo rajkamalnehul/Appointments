@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
 import Moment from 'react-moment';
+import '../css/listAppointment.css';
 
 class ListAppointments extends Component {
     render(props){
         return(
-                <div className="appointment-list item-list">
+                <div className="grid appointment-list item-list">
                     {this.props.appointments.map(item => (
-                        <div className="card d-flex pet-item mt-3 shadow p-3 mb-5 bg-white rounded" key={item.aptId}>
+                        <div className="background-list card d-flex pet-item mt-3 shadow p-3 mb-5  rounded " key={item.aptId}>
                             <div className="card-body">
                                 <h2 className="card-title pet-name ">{item.petName}</h2>
                                 <span className="apt-date ml-auto"><Moment
@@ -26,6 +27,8 @@ class ListAppointments extends Component {
                             </div>
                     ))}
               </div>
+
+             
 
             )}}
                 

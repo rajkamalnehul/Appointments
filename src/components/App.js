@@ -5,6 +5,8 @@ import AddAppointments from './AddAppointments';
 import SearchAppointments from './SearchAppointments';
 import {without} from 'lodash';
 
+
+
 class App extends Component {
   constructor(){
     super();
@@ -22,7 +24,7 @@ class App extends Component {
  
   querry=(querryText)=>{
     this.setState({searchField:querryText});
-    }
+  }
   
 
   changeOrder= (order,direction)=>{
@@ -75,14 +77,13 @@ class App extends Component {
       });
     });
   }
-  
-  
 
-
+  
   render() {
-    
-     let order;
+      
+      let order;
       let filteredApts = this.state.myAppointments;
+      
       
        if (this.state.orderDirection === 'asc') {
        order = 1;
@@ -90,7 +91,7 @@ class App extends Component {
        order = -1;
       }
    
-       filteredApts=filteredApts.sort((a, b) => {
+    let  filteredapts=filteredApts.sort((a, b) => {
       if (
        a[this.state.orderBy].toLowerCase() <
        b[this.state.orderBy].toLowerCase()
@@ -115,21 +116,15 @@ class App extends Component {
      });
 
      
-    return (
-      <main className="page bg-white" id="petratings">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 bg-white">
-              <div className="container">
-                <SearchAppointments orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder}  handleChange={this.querry} />
-                <AddAppointments formdisplay={this.state.formDisplay} toggleForm={this.toggleform} addAppointments={this.addAppointments}/>
-                <ListAppointments  appointments={filteredApts} deleteAppointments={this.deleteappointments }/>
-               
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+     
+return (
+  <main className='page' id="petratings">
+    <div className="container col-sm-12">
+      <SearchAppointments  orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder}  handleChange={this.querry} />
+      <AddAppointments formdisplay={this.state.formDisplay} toggleForm={this.toggleform} addAppointments={this.addAppointments}/>
+      <ListAppointments  appointments={filteredapts}  deleteAppointments={this.deleteappointments }/>
+     </div>
+  </main>
     );
   }
 }

@@ -4,14 +4,14 @@ import '../css/SearchAppointment.css';
 class SearchAppointments extends Component {
     render(){
         return(
-            <div>
-                <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top justify-content-between">
+            <div >
+                <nav className="navbar navbar-expand-sm navbar-dark bg fixed-top justify-content-between">
                     <h1 className="navbar-brand mx-auto font-weight-bold">Pet Empire Medecine</h1>
                     <form className="form-inline">
                         <input className="form-control search-outline-light mr-sm-2 mx-auto" type="search" placeholder="Search"  onChange={e=>this.props.handleChange(e.target.value)}/>
                     </form> 
                     <div className="dropdown">
-                        <button className="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort</button>
+                        <button className="btn btn-outline-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >Sort</button>
                         <div className="dropdown-menu dropdown-menu-right">
                            
                             <button className={'dropdown-item sort-by btn btn-outline-grey ' + (this.props.orderBy=== 'petName' ? 'active': '')} onClick={e=>this.props.changeOrder('petName',this.props.orderDirection)} >Pet Name</button>

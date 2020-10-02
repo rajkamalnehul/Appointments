@@ -1,5 +1,5 @@
 body {
-  font-weight: 200;
+  font-weight: 500;
   
 }
 
@@ -15,6 +15,6 @@ footer {
 
 .bg-primary,
 .btn-primary {
-  background-color: #377bb5 !important;
+  
   border: inherit;
 }
