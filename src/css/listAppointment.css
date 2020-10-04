@@ -16,5 +16,8 @@
   }
   
   .background-list{
-    background-image: linear-gradient(to right,white, #dae2e2e1);
+    border-radius: 10px;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
+    box-shadow:  10px 10px 15px #cfcfcf, 
+                 -10px -10px 15px #ffffff;
   }

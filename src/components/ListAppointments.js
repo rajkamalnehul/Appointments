@@ -7,7 +7,7 @@ class ListAppointments extends Component {
         return(
                 <div className="grid appointment-list item-list">
                     {this.props.appointments.map(item => (
-                        <div className="background-list card d-flex pet-item mt-3 shadow p-3 mb-5  rounded " key={item.aptId}>
+                        <div className="background-list card d-flex pet-item mt-3    " key={item.aptId}>
                             <div className="card-body">
                                 <h2 className="card-title pet-name ">{item.petName}</h2>
                                 <span className="apt-date ml-auto"><Moment

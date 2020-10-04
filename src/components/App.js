@@ -46,6 +46,7 @@ class App extends Component {
 
     this.setState({myAppointments:tempApts,
     lastIndex:this.state.lastIndex + 1});
+    this.setState({searchField:'a'});
     
     
     }
@@ -91,7 +92,7 @@ class App extends Component {
        order = -1;
       }
    
-    let  filteredapts=filteredApts.sort((a, b) => {
+      filteredApts=filteredApts.sort((a, b) => {
       if (
        a[this.state.orderBy].toLowerCase() <
        b[this.state.orderBy].toLowerCase()
@@ -122,7 +123,7 @@ return (
     <div className="container col-sm-12">
       <SearchAppointments  orderBy={this.state.orderBy} orderDirection={this.state.orderDirection} changeOrder={this.changeOrder}  handleChange={this.querry} />
       <AddAppointments formdisplay={this.state.formDisplay} toggleForm={this.toggleform} addAppointments={this.addAppointments}/>
-      <ListAppointments  appointments={filteredapts}  deleteAppointments={this.deleteappointments }/>
+      <ListAppointments  appointments={filteredApts}  deleteAppointments={this.deleteappointments }/>
      </div>
   </main>
     );
